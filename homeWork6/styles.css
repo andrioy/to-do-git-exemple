@@ -1,0 +1,64 @@
+body {
+    text-align: center;
+    background-color: aquamarine;
+    font-size: 150%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+input[type='text'] {
+    font-size: 100%;
+    border-radius: 50px;
+    padding: 10px;
+}
+
+#add-to-do-btn {
+    font-size: 100%;
+    border-radius: 50px;
+    padding: 10px;
+}
+
+.to-do-instance {
+    border: 1px solid black;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 1%;
+    width: 500px;
+    
+
+}
+
+#to-do-container {
+    border: 2px solid gray;
+    padding: 20px;
+    border-radius: 50px;
+    background-color: #79f6f7;
+
+}
+#to-do-container-checked {
+    border: 2px solid gray;
+    padding: 20px;
+    border-radius: 50px;
+    background-color: #79f6f7;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+
+
+
+.xBtn {
+    width: 80px;
+    color: red;
+    font-size: 36px;
+}
+
+input[type='checkbox'] {
+    height: 22px;
+    width: 22px;
+}

@@ -102,3 +102,5 @@ function remove(toDo) {
 loadToDos();
 
 
+console.log("something else");
+
