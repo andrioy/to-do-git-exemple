@@ -4,8 +4,14 @@ const toDoInput = document.getElementsByTagName("input")[0];
 //console.log(toDoInput);
 const toDoContainer = document.querySelector('#to-do-container');
 const toDoContainerChecked= document.querySelector('#to-do-container-checked');
+const selectToDos = document.getElementById("remote-or-local");
+
+
 
 let toDos = [];
+let localToDos = [];
+let remoteToDos = [];
+
 
 
 
@@ -18,10 +24,10 @@ function addToDo() {
     //1. chek if inpuy has value
     if (validText) {
         const newToDoObject = {
-            text: validText,
+            title: validText,
             completed: false,
         };
-        toDos.push(newToDoObject);
+        localToDos.push(newToDoObject);
         renderToDos();
         toDoInput.value = "";
         // preserveToDos();
@@ -40,6 +46,9 @@ function renderToDos() {
     toDoContainer.innerHTML = "";
     toDoContainerChecked.innerHTML = "";
     // create new element
+    if(selectToDos.value === "local") {
+        toDos = localToDos;
+    } else toDos = remoteToDos;
 
     toDos.forEach((todo) => {
             const newToDoElement = createToDoElement(todo);
@@ -63,7 +72,7 @@ function createToDoElement(toDoObj) {
 
     // //2. Create new HTML p element
     const pElement = document.createElement('p');
-    pElement.textContent = toDoObj.text;
+    pElement.textContent = toDoObj.title;
     // //console.log(pElement);
     // //3. Create new button - delete ToDo
     const deleteBtn = document.createElement('button');
@@ -71,7 +80,7 @@ function createToDoElement(toDoObj) {
     deleteBtn.textContent = "❌";
     deleteBtn.addEventListener("click", () => {
         divElement.remove();
-        toDos = toDos.filter((el) => el.text !== toDoObj.text);
+        toDos = toDos.filter((el) => el.title !== toDoObj.title);
     });
 
     divElement.remove();
@@ -96,7 +105,19 @@ function createToDoElement(toDoObj) {
     return divElement;
 }
 
+function remoteTodos() {
+    return fetch("https://jsonplaceholder.typicode.com/todos?userId=3").then((remToDos) => remToDos.json()).then((remToDos) => (remoteToDos = remToDos));
+  }
+
+async function ddd(){
+    remoteToDos = await remoteTodos();
+    renderToDos();
+};
+
+// renderToDos();
+
 addToDoBtn.addEventListener("click", addToDo);
 toDoInput.addEventListener("keydown", (event) => {
     if (event.key == "Enter") addToDo();
 });
+selectToDos.addEventListener("change",ddd);
