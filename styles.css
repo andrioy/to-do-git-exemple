@@ -17,6 +17,12 @@ input[type='text'] {
     padding: 10px;
 }
 
+#remote-or-local{
+    font-size: 100%;
+    border-radius: 50px;
+    padding: 10px;
+}
+
 .to-do-instance {
     border: 1px solid black;
     margin: 10px 0;

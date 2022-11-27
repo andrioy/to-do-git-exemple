@@ -111,6 +111,9 @@ function remoteTodos() {
 
 async function ddd(){
     remoteToDos = await remoteTodos();
+    remoteToDos = remoteToDos.filter(el => el.id<=50);
+
+
     renderToDos();
 };
 
@@ -118,6 +121,6 @@ async function ddd(){
 
 addToDoBtn.addEventListener("click", addToDo);
 toDoInput.addEventListener("keydown", (event) => {
-    if (event.key == "Enter") addToDo();
+    if (event.key === "Enter") addToDo();
 });
 selectToDos.addEventListener("change",ddd);
